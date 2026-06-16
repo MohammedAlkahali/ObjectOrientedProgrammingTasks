@@ -142,6 +142,9 @@
             int nextNumber = guests.Count + 1;
             string guestId = "G" + nextNumber.ToString("D3");
 
+            //  Create a new Guest object
+            Guest newGuest = new Guest(guestId, guestName, checkInDate, numberOfNight);
+            guests.Add(newGuest);
         static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
