@@ -24,6 +24,7 @@
         }
     }
 
+
     class Guest
     {
         public string guestId;
@@ -54,8 +55,53 @@
             Console.WriteLine($"{guestId} | {guestName} | Room: {roomNumber} | CheckIn Date: {checkInDate} | Nights: {totalNights}");
         }
     }
+
+
     internal class Program
     {
+
+        static void AddNewRoom(List<Room> rooms)
+        {
+            // clerk to enter room number
+            Console.Write("Enter the room number: ");
+            int number = int.Parse(Console.ReadLine());
+
+            if (number <= 0)
+            {
+                Console.WriteLine("Error: The room number must be above 0.");
+                return;
+            }
+
+            // Duplicate check with LINQ — is there ANY room with this number already exist
+            bool exists = rooms.Any(r => r.roomNumber == number);
+            if (exists)
+            {
+                Console.WriteLine("A room with that number already exists.");
+                return;
+            }
+
+            // For the room type
+            Console.Write("Enter room type (Single / Double / Suite): ");
+            string type = Console.ReadLine();
+
+            // For the price per night
+            Console.Write("Enter price per night: ");
+            double price = double.Parse(Console.ReadLine());
+
+            if (price <= 0)
+            {
+                Console.WriteLine("The price must be positive");
+            }
+
+            Room newRoom = new Room(number, type, price);
+            rooms.Add(newRoom);
+
+            Console.WriteLine("Room added successfully!");
+            newRoom.displayRoom();
+            Console.WriteLine($"Total rooms now: {rooms.Count}");
+        }
+
+
         static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
@@ -77,16 +123,16 @@
                 Console.WriteLine("================================================");
                 Console.WriteLine("   GRAND VISTA HOTEL — MANAGEMENT SYSTEM");
                 Console.WriteLine("================================================");
-                Console.WriteLine("           1. Add New Room");
-                Console.WriteLine("           2. Register New Guest");
-                Console.WriteLine("           3. Book a Room for a Guest");
-                Console.WriteLine("           4. Search & Filter Rooms");
-                Console.WriteLine("           5. Guest & Booking Statistics");
-                Console.WriteLine("           6. Check Out a Guest");
-                Console.WriteLine("           7. Remove Unavailable Rooms");
-                Console.WriteLine("           0. Exit");
+                Console.WriteLine("1. Add New Room");
+                Console.WriteLine("2. Register New Guest");
+                Console.WriteLine("3. Book a Room for a Guest");
+                Console.WriteLine("4. Search & Filter Rooms");
+                Console.WriteLine("5. Guest & Booking Statistics");
+                Console.WriteLine("6. Check Out a Guest");
+                Console.WriteLine("7. Remove Unavailable Rooms");
+                Console.WriteLine("0. Exit");
                 Console.WriteLine("================================================");
-                Console.Write("             Enter your choice: ");
+                Console.Write("Enter your choice: ");
                 int choice = int.Parse (Console.ReadLine());
 
                 // Start the switch cases
@@ -94,7 +140,9 @@
                 {
 
                     case 1:
-                   
+
+                        AddNewRoom(rooms);
+                        break;
 
                     case 0: 
                         exit = false; 
