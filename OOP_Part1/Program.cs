@@ -23,6 +23,37 @@
             Console.WriteLine($"Room {roomNumber} | {roomType} | OMR {pricePerNight:F2} /night | {status}");
         }
     }
+
+    class Guest
+    {
+        public string guestId;
+        public string guestName;
+        public string roomNumber;
+        public string checkInDate;
+        public int totalNights;
+        public double pricePerNight;
+
+
+        public Guest(string id, string name, string checkIn, int nights)
+        {
+            guestId = id;
+            guestName = name;
+            checkInDate = checkIn;
+            totalNights = nights;
+            roomNumber = "Not Assigned";
+            pricePerNight = 0;
+        }
+
+        public double calculateTotalCost()
+        {
+            return pricePerNight * totalNights;
+        }
+
+        public void displayGuest ()
+        {
+            Console.WriteLine($"{guestId} | {guestName} | Room: {roomNumber} | CheckIn Date: {checkInDate} | Nights: {totalNights}");
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
