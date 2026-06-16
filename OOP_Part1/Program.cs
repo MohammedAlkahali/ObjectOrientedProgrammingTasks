@@ -1,6 +1,28 @@
 ﻿namespace OOP_Part1
 {
 
+
+    class Room
+    {
+        public int roomNumber;
+        public string roomType;
+        public double pricePerNight;
+        public bool isAvailable;
+
+        public Room(int number, string type, double price)
+        {
+            roomNumber = number;
+            roomType = type;
+            pricePerNight = price;
+            isAvailable = true;   
+        }
+
+        public void displayRoom()
+        {
+            string status = isAvailable ? "Available" : "Booked";
+            Console.WriteLine($"Room {roomNumber} | {roomType} | OMR {pricePerNight:F2} /night | {status}");
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
