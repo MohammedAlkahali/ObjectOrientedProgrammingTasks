@@ -59,7 +59,7 @@
 
     internal class Program
     {
-
+        // Case 01 Add New Room
         static void AddNewRoom(List<Room> rooms)
         {
             // clerk to enter room number
@@ -100,6 +100,43 @@
             newRoom.displayRoom();
             Console.WriteLine($"Total rooms now: {rooms.Count}");
         }
+
+
+
+
+
+
+        // Case 02 Register New Guest
+        static void RegisterNewGuest(List<Guest> guests)
+        {
+            // To enter the name of the guest
+            Console.Write("Enter your name: ");
+            string guestName = Console.ReadLine();
+
+            // // Validate that the name is not empty 
+            if(string.IsNullOrWhiteSpace(guestName)) 
+            {
+                Console.WriteLine();
+                Console.WriteLine("The name can't be empty, please write a name");
+                Console.WriteLine();
+                return;
+            }
+
+            // To enter the check in date
+            Console.Write("Enter the check in date: ");
+            string checkInDate = Console.ReadLine();
+
+            // Number of night staying
+            Console.Write("Enter the number of night staying: ");
+            int numberOfNights = int.Parse(Console.ReadLine());
+
+            if(numberOfNights <= 0)
+            {
+                Console.WriteLine();
+                Console.WriteLine("The number must be above 0") ;
+                Console.WriteLine();
+                return;
+            }
 
 
         static void Main(string[] args)
@@ -162,4 +199,4 @@
             } // While
         } // Main
     } // Class program
-} // Name space
+}} // Name space
