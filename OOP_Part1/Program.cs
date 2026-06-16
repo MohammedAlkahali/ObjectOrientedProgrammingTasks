@@ -58,6 +58,18 @@
     {
         static void Main(string[] args)
         {
+            // Declare the lists for the Room and Guest
+            List<Room> rooms = new List<Room>();
+            List<Guest> guests = new List<Guest>();
+
+            // Pre-load rooms with at least 6 rooms.
+            rooms.Add(new Room (100, "Single" ,20));
+            rooms.Add(new Room (101, "Single" ,20));
+            rooms.Add(new Room (102, "Double" ,45));
+            rooms.Add(new Room (103, "Suite"  ,80));
+            rooms.Add(new Room (104, "Double" ,75));
+            rooms.Add(new Room (105, "Suite"  ,95));
+
 
             bool exit = true;
             while (exit)
@@ -65,26 +77,31 @@
                 Console.WriteLine("================================================");
                 Console.WriteLine("   GRAND VISTA HOTEL — MANAGEMENT SYSTEM");
                 Console.WriteLine("================================================");
-                Console.WriteLine("1. Add New Room");
-                Console.WriteLine("2. Register New Guest");
-                Console.WriteLine("3. Book a Room for a Guest");
-                Console.WriteLine("4. Search & Filter Rooms");
-                Console.WriteLine("5. Guest & Booking Statistics");
-                Console.WriteLine("6. Check Out a Guest");
-                Console.WriteLine("7. Remove Unavailable Rooms");
-                Console.WriteLine("0. Exit");
+                Console.WriteLine("           1. Add New Room");
+                Console.WriteLine("           2. Register New Guest");
+                Console.WriteLine("           3. Book a Room for a Guest");
+                Console.WriteLine("           4. Search & Filter Rooms");
+                Console.WriteLine("           5. Guest & Booking Statistics");
+                Console.WriteLine("           6. Check Out a Guest");
+                Console.WriteLine("           7. Remove Unavailable Rooms");
+                Console.WriteLine("           0. Exit");
                 Console.WriteLine("================================================");
-                Console.Write("Enter your choice: ");
+                Console.Write("             Enter your choice: ");
                 int choice = int.Parse (Console.ReadLine());
 
+                // Start the switch cases
                 switch (choice)
                 {
+
+                    case 1:
+                   
+
                     case 0: 
                         exit = false; 
                         break;
 
-                    default: 
-                        Console.WriteLine("Invalid choice."); 
+                    default: // If he enter numbers not included in the main menu it print this message.
+                        Console.WriteLine("-> Invalid choice."); 
                         break;
                 } // Switch
 
