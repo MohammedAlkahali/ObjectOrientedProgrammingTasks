@@ -104,17 +104,17 @@
 
 
 
-
-
         // Case 02 Register New Guest
         static void RegisterNewGuest(List<Guest> guests)
         {
             // To enter the name of the guest
+            Console.WriteLine();
             Console.Write("Enter your name: ");
+            
             string guestName = Console.ReadLine();
 
             // // Validate that the name is not empty 
-            if(string.IsNullOrWhiteSpace(guestName)) 
+            if (string.IsNullOrWhiteSpace(guestName))
             {
                 Console.WriteLine();
                 Console.WriteLine("The name can't be empty, please write a name");
@@ -123,17 +123,20 @@
             }
 
             // To enter the check in date
+            Console.WriteLine();
             Console.Write("Enter the check in date: ");
+            
             string checkInDate = Console.ReadLine();
 
             // Number of night staying
+            Console.WriteLine();
             Console.Write("Enter the number of night staying: ");
-            int numberOfNights = int.Parse(Console.ReadLine());
+            int numberOfNight = int.Parse(Console.ReadLine());
 
-            if(numberOfNights <= 0)
+            if (numberOfNight <= 0)
             {
                 Console.WriteLine();
-                Console.WriteLine("The number must be above 0") ;
+                Console.WriteLine("The number must be above 0");
                 Console.WriteLine();
                 return;
             }
@@ -145,7 +148,18 @@
             //  Create a new Guest object
             Guest newGuest = new Guest(guestId, guestName, checkInDate, numberOfNight);
             guests.Add(newGuest);
-        static void Main(string[] args)
+
+            //  Display a confirmation
+            Console.WriteLine();
+            Console.WriteLine($"The guest added successfully!");
+            Console.WriteLine();
+            newGuest.displayGuest();
+        }
+
+
+
+
+            static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
             List<Room> rooms = new List<Room>();
@@ -160,8 +174,8 @@
             rooms.Add(new Room (105, "Suite"  ,95));
 
 
-            bool exit = true;
-            while (exit)
+            bool running = true;
+            while (running)
             {   // The main menu of the system
                 Console.WriteLine("================================================");
                 Console.WriteLine("   GRAND VISTA HOTEL — MANAGEMENT SYSTEM");
@@ -183,12 +197,17 @@
                 {
 
                     case 1:
-
-                        AddNewRoom(rooms);
+                        AddNewRoom(rooms);  // Call the function that we did to add new room.
                         break;
 
-                    case 0: 
-                        exit = false; 
+
+                    case 2:
+                        RegisterNewGuest(guests); // Call the function that we did to add new guest.
+                        break;
+
+
+                    case 0:
+                        running = false; 
                         break;
 
                     default: // If he enter numbers not included in the main menu it print this message.
@@ -205,4 +224,4 @@
             } // While
         } // Main
     } // Class program
-}} // Name space
+} // Name space
