@@ -138,6 +138,9 @@
                 return;
             }
 
+            // Auto-generate the guest ID
+            int nextNumber = guests.Count + 1;
+            string guestId = "G" + nextNumber.ToString("D3");
 
         static void Main(string[] args)
         {
