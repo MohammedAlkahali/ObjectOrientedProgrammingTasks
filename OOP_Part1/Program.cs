@@ -91,6 +91,7 @@
             if (price <= 0)
             {
                 Console.WriteLine("The price must be positive");
+                return;
             }
 
             Room newRoom = new Room(number, type, price);
@@ -159,6 +160,15 @@
 
 
 
+        // Case 03 Book a Room for a Guest
+        static void BookRoom(List<Room> rooms, List<Guest> guests)
+        {
+            // Prompt for guest ID and room number
+            Console.Write("Enter guest ID: ");
+            string guestId = Console.ReadLine();
+
+            Console.Write("Enter room number: ");
+            int roomNumber = int.Parse(Console.ReadLine());
             static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
