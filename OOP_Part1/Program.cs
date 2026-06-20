@@ -187,6 +187,13 @@
                 Console.WriteLine("Room not found.");
                 return;
             }
+
+            // Check the room is available
+            if (room.isAvailable == false)
+            {
+                Console.WriteLine("Room is already booked.");
+                return;
+            }
             static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
