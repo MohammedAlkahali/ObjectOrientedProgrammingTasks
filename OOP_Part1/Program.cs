@@ -169,6 +169,24 @@
 
             Console.Write("Enter room number: ");
             int roomNumber = int.Parse(Console.ReadLine());
+
+            // Find the guest — returns the object, or null if not found
+            Guest guest = guests.FirstOrDefault(g => g.guestId == guestId);
+
+            // Find the room — returns the object, or null if not found
+            Room room = rooms.FirstOrDefault(r => r.roomNumber == roomNumber);
+
+            // If either lookup failed, stop
+            if (guest == null)
+            {
+                Console.WriteLine("Guest not found.");
+                return;
+            }
+            if (room == null)
+            {
+                Console.WriteLine("Room not found.");
+                return;
+            }
             static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
