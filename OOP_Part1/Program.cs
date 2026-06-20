@@ -194,7 +194,26 @@
                 Console.WriteLine("Room is already booked.");
                 return;
             }
-            static void Main(string[] args)
+
+            // All checks passed — make the booking
+            guest.roomNumber = room.roomNumber.ToString();  // int -> string bridge
+            guest.pricePerNight = room.pricePerNight;        // copy price so the bill works
+            room.isAvailable = false;                        // mark the room as taken
+
+            // Booking confirmation
+            Console.WriteLine();
+            Console.WriteLine("Booking confirmed!");
+            Console.WriteLine($"Guest: {guest.guestName}");
+            Console.WriteLine($"Room: {room.roomNumber} ({room.roomType})");
+            Console.WriteLine($"Price per night: OMR {room.pricePerNight:F2}");
+            Console.WriteLine($"Total nights: {guest.totalNights}");
+            Console.WriteLine($"Total cost: OMR {guest.calculateTotalCost():F2}");
+        }
+
+
+
+
+        static void Main(string[] args)
         {
             // Declare the lists for the Room and Guest
             List<Room> rooms = new List<Room>();
@@ -238,6 +257,11 @@
 
                     case 2:
                         RegisterNewGuest(guests); // Call the function that we did to add new guest.
+                        break;
+
+
+                    case 3:
+                        BookRoom(rooms, guests);  // Booking links both lists
                         break;
 
 
